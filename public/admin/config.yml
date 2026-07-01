@@ -54,6 +54,7 @@ collections:
     extension: "json"
     format: "json"
     identifier_field: "categorie"
+    sortable_fields: ["ordre", "categorie"]
     fields:
       - { label: "Nom de la catégorie", name: "categorie", widget: "string" }
       - { label: "Ordre d'affichage", name: "ordre", widget: "number", default: 0 }
@@ -71,21 +72,6 @@ collections:
           - { label: "Nom du plat", name: "nom", widget: "string" }
           - { label: "Description", name: "description", widget: "string", required: false }
           - { label: "Prix", name: "prix", widget: "string" }
-
-  - name: "events"
-    label: "Soirées & événements"
-    folder: "src/content/events"
-    create: true
-    extension: "md"
-    format: "frontmatter"
-    identifier_field: "titre"
-    fields:
-      - { label: "Titre", name: "titre", widget: "string" }
-      - { label: "Date", name: "date", widget: "date" }
-      - { label: "Heure", name: "heure", widget: "string", required: false }
-      - { label: "Photo", name: "image", widget: "image", required: false }
-      - { label: "Résumé (affiché sur la carte)", name: "resume", widget: "string", required: false }
-      - { label: "Description complète", name: "body", widget: "markdown", required: false }
 
   - name: "gallery"
     label: "Galerie photo"
