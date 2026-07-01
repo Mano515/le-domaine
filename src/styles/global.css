@@ -223,6 +223,9 @@ section[id] {
   color: var(--color-navy-950);
   font-family: var(--font-serif);
   font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding-bottom: 0.15em;
   box-shadow: 0 4px 10px -2px rgba(11, 21, 38, 0.4);
   flex-shrink: 0;
 }
