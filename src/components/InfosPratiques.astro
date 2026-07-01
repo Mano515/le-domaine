@@ -45,6 +45,12 @@ import Squiggle from './Squiggle.astro';
                 <p class="text-navy-900/70 text-sm">Jeudi à samedi : {site.horaires.bar_jeu_sam}</p>
               </div>
             </div>
+            {site.horaires.ferme && (
+              <div class="flex items-start gap-3">
+                <span class="text-xl leading-none mt-0.5">🚫</span>
+                <p class="text-navy-900/70 text-sm mt-0.5">{site.horaires.ferme}</p>
+              </div>
+            )}
           </div>
         </div>
 

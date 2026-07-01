@@ -9,9 +9,12 @@
   "horaires": {
     "restauration": "11h–15h (sauf lundi)",
     "bar_lun_mer": "18h – 00h",
-    "bar_jeu_sam": "18h – 1h"
+    "bar_jeu_sam": "18h – 1h",
+    "ferme": "Fermé le dimanche"
   },
   "instagramWidgetUrl": "",
   "googleReviewsUrl": "https://www.google.com/maps/place/Le+Domaine/@45.1868305,5.7238354,17z/data=!4m8!3m7!1s0x478af5f39ae29627:0xb6a44d8b52edcdba!8m2!3d45.1868305!4d5.7238354!9m1!1b1!16s%2Fg%2F11y8wvhsrw",
-  "googleReviewsWidgetUrl": ""
+  "googleReviewsWidgetUrl": "",
+  "googleRating": 4.8,
+  "googleRatingCount": 74
 }

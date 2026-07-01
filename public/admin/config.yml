@@ -30,6 +30,7 @@ collections:
               - { label: "Restauration", name: "restauration", widget: "string" }
               - { label: "Bar (lundi-mercredi)", name: "bar_lun_mer", widget: "string" }
               - { label: "Bar (jeudi-samedi)", name: "bar_jeu_sam", widget: "string" }
+              - { label: "Jour(s) de fermeture", name: "ferme", widget: "string", required: false }
           - label: "Widget Instagram (optionnel, lien embed SnapWidget/Elfsight)"
             name: "instagramWidgetUrl"
             widget: "string"
@@ -41,6 +42,8 @@ collections:
             name: "googleReviewsWidgetUrl"
             widget: "string"
             required: false
+          - { label: "Note Google globale (ex: 4.8)", name: "googleRating", widget: "number", value_type: "float", required: false }
+          - { label: "Nombre d'avis Google", name: "googleRatingCount", widget: "number", required: false }
 
   - name: "menu"
     label: "La carte"
