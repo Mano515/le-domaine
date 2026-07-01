@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Mano515/le-domaine
   branch: main
+  base_url: https://le-domaine-grenoble.netlify.app
 
 publish_mode: simple
 media_folder: "public/images"
