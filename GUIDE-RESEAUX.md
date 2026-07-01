@@ -16,13 +16,7 @@ Ce guide explique comment faire apparaître automatiquement les photos Instagram
 
 **Étape 5 —** Cliquer sur "Get Code", puis copier le lien qui apparaît (il commence par `https://snapwidget.com/embed/...`).
 
-**Étape 6 —** Aller sur `/admin` du site → **Informations générales** → **Paramètres du site**.
-
-**Étape 7 —** Coller le lien copié dans le champ **"Widget Instagram"**.
-
-**Étape 8 —** Cliquer sur "Publier" en haut de la page.
-
-Les photos Instagram apparaissent maintenant automatiquement dans la galerie du site.
+**Étape 6 —** Envoyer ce lien.
 
 ---
 
@@ -38,10 +32,4 @@ Les photos Instagram apparaissent maintenant automatiquement dans la galerie du 
 
 **Étape 5 —** Cliquer sur "Publish", puis copier le lien d'intégration du widget.
 
-**Étape 6 —** Aller sur `/admin` du site → **Informations générales** → **Paramètres du site**.
-
-**Étape 7 —** Coller le lien copié dans le champ **"Widget avis Google"**.
-
-**Étape 8 —** Cliquer sur "Publier" en haut de la page.
-
-Les avis Google et la note globale apparaissent maintenant automatiquement sur le site, mis à jour en continu.
+**Étape 6 —** Envoyer ce lien.
