@@ -68,9 +68,10 @@ collections:
       - label: "Plats"
         name: "plats"
         widget: "list"
+        collapsed: true
+        summary: "{{fields.nom}} — {{fields.prix}}"
         fields:
           - { label: "Nom du plat", name: "nom", widget: "string" }
-          - { label: "Description", name: "description", widget: "string", required: false }
           - { label: "Prix", name: "prix", widget: "string" }
 
   - name: "gallery"
