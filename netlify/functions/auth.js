@@ -1,7 +1,7 @@
 exports.handler = async (event) => {
   const clientId = process.env.OAUTH_CLIENT_ID;
   const siteUrl = process.env.URL || `https://${event.headers.host}`;
-  const redirectUri = `${siteUrl}/.netlify/functions/callback`;
+  const redirectUri = `${siteUrl}/callback`;
 
   if (!clientId) {
     return { statusCode: 500, body: 'OAUTH_CLIENT_ID manquant.' };
