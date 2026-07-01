@@ -25,19 +25,17 @@ import site from '../data/site.json';
       <img src="/images/logo-white.png" alt={site.nom} class="h-24 w-auto mx-auto" />
     </div>
 
-    <h1 class="hero-in font-serif text-5xl sm:text-6xl text-cream-50 tracking-wide mb-4" style="animation-delay: 120ms">
-      {site.nom}
-    </h1>
-    <p class="hero-in font-serif italic text-gold-400 text-lg sm:text-xl tracking-wide mb-8" style="animation-delay: 220ms">
+    <h1 class="sr-only">{site.nom}</h1>
+    <p class="hero-in font-serif italic text-gold-400 text-xl sm:text-2xl tracking-wide mb-10" style="animation-delay: 120ms">
       {site.accroche}
     </p>
 
-    <div class="hero-in flex justify-center mb-10" style="animation-delay: 320ms">
+    <div class="hero-in flex justify-center mb-10" style="animation-delay: 220ms">
       <a
         href="#infos"
-        class="inline-flex items-center gap-2 text-sm text-cream-100/80 hover:text-gold-400 transition-colors underline underline-offset-4 decoration-gold-500/40"
+        class="inline-flex items-center gap-2 text-sm text-cream-100/70 hover:text-gold-400 transition-colors underline underline-offset-4 decoration-gold-500/30"
       >
-        🍽 Restaurant le midi · 🍷 Bar le soir — voir les horaires détaillés
+        Voir les horaires
       </a>
     </div>
 

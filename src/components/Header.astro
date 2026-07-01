@@ -14,9 +14,8 @@ const links = [
   class="fixed top-0 left-0 right-0 z-50 bg-navy-950/80 backdrop-blur-sm border-b border-gold-500/20 transition-shadow duration-300"
 >
   <div class="mx-auto max-w-6xl px-5 sm:px-8 flex items-center justify-between h-16">
-    <a href="#top" class="flex items-center gap-2.5">
-      <img src="/images/logo-white.png" alt={site.nom} class="h-9 w-auto" />
-      <span class="font-serif text-cream-100 text-lg tracking-wide">{site.nom}</span>
+    <a href="#top" aria-label={site.nom}>
+      <img src="/images/logo-white.png" alt={site.nom} class="h-10 w-auto" />
     </a>
 
     <nav class="hidden md:flex items-center gap-8">
