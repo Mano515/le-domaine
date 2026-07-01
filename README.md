@@ -21,18 +21,7 @@ Le site est disponible sur `http://localhost:4321`.
 
 Les images sont dans `public/images/`. Certains éléments (galerie, événements) ont encore des visuels de substitution (SVG) — à remplacer par de vraies photos via l'admin (voir plus bas).
 
-**⚠️ Site actuellement en phase de validation (non indexé) :**
-
-Le site est volontairement caché des moteurs de recherche (`<meta name="robots" content="noindex, nofollow">` dans `src/layouts/Layout.astro` + `public/robots.txt` qui bloque tout) le temps que Le Domaine valide le contenu. **Avant la mise en ligne officielle**, il faut :
-1. Retirer la ligne `<meta name="robots" content="noindex, nofollow" />` dans `src/layouts/Layout.astro`
-2. Restaurer `public/robots.txt` à :
-   ```
-   User-agent: *
-   Allow: /
-   Disallow: /admin/
-
-   Sitemap: https://ledomainegre.fr/sitemap-index.xml
-   ```
+Le site est en ligne sur **ledomainegre.fr**, ouvert à l'indexation par les moteurs de recherche.
 
 ## Déploiement (Netlify) + administration en autonomie
 
