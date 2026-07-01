@@ -21,10 +21,18 @@ Le site est disponible sur `http://localhost:4321`.
 
 Les images sont dans `public/images/`. Certains éléments (galerie, événements) ont encore des visuels de substitution (SVG) — à remplacer par de vraies photos via l'admin (voir plus bas).
 
-**⚠️ À faire avant la mise en ligne définitive :**
-- Remplacer les 3 avis d'exemple dans `src/content/reviews/` par de vrais avis clients (actuellement des exemples fictifs — ne pas laisser en prod).
-- Ajouter au moins un événement à venir dans `src/content/events/` (les événements actuels sont déjà passés).
-- Renseigner `telephone` dans `src/data/site.json` si vous voulez qu'un numéro apparaisse sur le site.
+**⚠️ Site actuellement en phase de validation (non indexé) :**
+
+Le site est volontairement caché des moteurs de recherche (`<meta name="robots" content="noindex, nofollow">` dans `src/layouts/Layout.astro` + `public/robots.txt` qui bloque tout) le temps que Le Domaine valide le contenu. **Avant la mise en ligne officielle**, il faut :
+1. Retirer la ligne `<meta name="robots" content="noindex, nofollow" />` dans `src/layouts/Layout.astro`
+2. Restaurer `public/robots.txt` à :
+   ```
+   User-agent: *
+   Allow: /
+   Disallow: /admin/
+
+   Sitemap: https://<votre-domaine>/sitemap-index.xml
+   ```
 
 ## Déploiement (Netlify) + administration en autonomie
 
