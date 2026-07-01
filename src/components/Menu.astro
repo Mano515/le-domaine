@@ -22,17 +22,17 @@ const categories = (await getCollection('menu')).sort(
             <div class="hidden sm:block col-span-2 border-t border-gold-500/15" aria-hidden="true"></div>
           )}
           <div class={`ornament p-6 transition-all duration-300 hover:bg-white/[0.03] rounded-sm ${i % 2 === 0 ? 'tilt-a' : 'tilt-b'}`}>
-            <div class="flex items-center justify-center gap-3 mb-1">
+            {cat.data.moment && (
+              <p class="absolute top-3 right-4 text-cream-100/40 text-xs tracking-widest uppercase">
+                {cat.data.moment === 'midi' ? 'Servi le midi' : 'Servi le soir'}
+              </p>
+            )}
+            <div class="flex items-center justify-center gap-3 mb-5">
               <span class="seal">{i + 1}</span>
               <h3 class="font-serif text-2xl text-gold-400 text-center">
                 {cat.data.categorie}
               </h3>
             </div>
-            {cat.data.moment && (
-              <p class="text-center text-cream-100/40 text-xs tracking-widest uppercase mb-4">
-                {cat.data.moment === 'midi' ? 'Servi le midi' : 'Servi le soir'}
-              </p>
-            )}
             <ul class="space-y-3.5">
               {cat.data.plats.map((plat) => (
                 <li class="flex items-baseline gap-3">
