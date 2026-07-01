@@ -1,6 +1,7 @@
 {
   "categorie": "Desserts",
-  "ordre": 3,
+  "ordre": 1,
+  "moment": "midi",
   "plats": [
     { "nom": "Soufflet cookie", "prix": "6,90 €" },
     { "nom": "Sunday framboise caramel", "prix": "6,90 €" },

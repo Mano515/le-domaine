@@ -17,23 +17,33 @@ const categories = (await getCollection('menu')).sort(
 
     <div class="reveal-stagger grid sm:grid-cols-2 gap-x-12 gap-y-14">
       {categories.map((cat, i) => (
-        <div class={`ornament p-6 transition-all duration-300 hover:bg-white/[0.03] rounded-sm ${i % 2 === 0 ? 'tilt-a' : 'tilt-b'}`}>
-          <div class="flex items-center justify-center gap-3 mb-5">
-            <span class="seal">{i + 1}</span>
-            <h3 class="font-serif text-2xl text-gold-400 text-center">
-              {cat.data.categorie}
-            </h3>
+        <>
+          {i > 0 && cat.data.moment && categories[i - 1].data.moment && cat.data.moment !== categories[i - 1].data.moment && (
+            <div class="hidden sm:block col-span-2 border-t border-gold-500/15" aria-hidden="true"></div>
+          )}
+          <div class={`ornament p-6 transition-all duration-300 hover:bg-white/[0.03] rounded-sm ${i % 2 === 0 ? 'tilt-a' : 'tilt-b'}`}>
+            <div class="flex items-center justify-center gap-3 mb-1">
+              <span class="seal">{i + 1}</span>
+              <h3 class="font-serif text-2xl text-gold-400 text-center">
+                {cat.data.categorie}
+              </h3>
+            </div>
+            {cat.data.moment && (
+              <p class="text-center text-cream-100/40 text-xs tracking-widest uppercase mb-4">
+                {cat.data.moment === 'midi' ? 'Servi le midi' : 'Servi le soir'}
+              </p>
+            )}
+            <ul class="space-y-3.5">
+              {cat.data.plats.map((plat) => (
+                <li class="flex items-baseline gap-3">
+                  <span class="text-cream-100">{plat.nom}</span>
+                  <span class="flex-1 border-b border-dotted border-cream-100/25 translate-y-[-3px]"></span>
+                  <span class="text-gold-400 text-sm shrink-0">{plat.prix}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul class="space-y-3.5">
-            {cat.data.plats.map((plat) => (
-              <li class="flex items-baseline gap-3">
-                <span class="text-cream-100">{plat.nom}</span>
-                <span class="flex-1 border-b border-dotted border-cream-100/25 translate-y-[-3px]"></span>
-                <span class="text-gold-400 text-sm shrink-0">{plat.prix}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        </>
       ))}
     </div>
 

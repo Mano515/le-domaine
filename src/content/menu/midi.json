@@ -1,6 +1,7 @@
 {
   "categorie": "Le midi",
   "ordre": 0,
+  "moment": "midi",
   "plats": [
     { "nom": "Vol-au-vent au bœuf sauce tartare", "prix": "15,90 €" },
     { "nom": "Poulet karaage", "prix": "18,90 €" },

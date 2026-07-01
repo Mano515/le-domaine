@@ -57,6 +57,13 @@ collections:
     fields:
       - { label: "Nom de la catégorie", name: "categorie", widget: "string" }
       - { label: "Ordre d'affichage", name: "ordre", widget: "number", default: 0 }
+      - label: "Servi à quel moment ?"
+        name: "moment"
+        widget: "select"
+        required: false
+        options:
+          - { label: "Le midi uniquement", value: "midi" }
+          - { label: "Le soir uniquement", value: "soir" }
       - label: "Plats"
         name: "plats"
         widget: "list"

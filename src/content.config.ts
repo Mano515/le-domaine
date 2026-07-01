@@ -6,6 +6,7 @@ const menu = defineCollection({
   schema: z.object({
     categorie: z.string(),
     ordre: z.number().default(0),
+    moment: z.enum(['midi', 'soir']).optional(),
     plats: z.array(
       z.object({
         nom: z.string(),
