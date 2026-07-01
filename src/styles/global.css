@@ -223,6 +223,7 @@ section[id] {
   background: var(--color-gold-500);
   color: var(--color-navy-950);
   font-family: var(--font-serif);
+  font-variant-numeric: lining-nums tabular-nums;
   font-size: 1.3rem;
   font-weight: 700;
   line-height: 1;
