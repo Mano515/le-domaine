@@ -9,8 +9,9 @@ const year = new Date().getFullYear();
       <img src="/images/logo-white.png" alt={site.nom} class="h-8 w-auto" />
       <p class="font-serif text-cream-100 text-lg">{site.nom}</p>
     </div>
-    <p class="text-cream-100/50 text-sm text-center">
-      {site.adresse} · &copy; {year} {site.nom}
-    </p>
+    <div class="text-cream-100/50 text-sm text-center sm:text-right">
+      <p>{site.adresse} · &copy; {year} {site.nom}</p>
+      <p class="text-cream-100/30 text-xs mt-1">Site conçu par Manuel Hernandez</p>
+    </div>
   </div>
 </footer>
