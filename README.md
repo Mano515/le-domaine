@@ -31,7 +31,7 @@ Le site est volontairement caché des moteurs de recherche (`<meta name="robots"
    Allow: /
    Disallow: /admin/
 
-   Sitemap: https://<votre-domaine>/sitemap-index.xml
+   Sitemap: https://ledomainegre.fr/sitemap-index.xml
    ```
 
 ## Déploiement (Netlify) + administration en autonomie
