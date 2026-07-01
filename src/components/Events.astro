@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Squiggle from './Squiggle.astro';
+import Eyebrow from './Eyebrow.astro';
 
 const now = new Date(new Date().toDateString());
 const allEvents = await getCollection('events');
@@ -30,7 +31,7 @@ const formatter = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'lon
 <section id="soirees" class="py-24 sm:py-32 bg-cream-50">
   <div class="mx-auto max-w-5xl px-5 sm:px-8">
     <div class="reveal text-center mb-16">
-      <p class="text-gold-600 text-sm tracking-[0.2em] uppercase mb-3">{isUpcoming ? 'À venir' : 'Ça s\'est passé ici'}</p>
+      <Eyebrow>{isUpcoming ? 'À venir' : 'Ça s\'est passé ici'}</Eyebrow>
       <h2 class="font-serif text-4xl sm:text-5xl text-navy-900">Nos soirées</h2>
       <Squiggle color="#ad8548" />
     </div>

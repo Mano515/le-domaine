@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import site from '../data/site.json';
 import Squiggle from './Squiggle.astro';
+import Eyebrow from './Eyebrow.astro';
 
 const photos = (await getCollection('gallery')).sort(
   (a, b) => a.data.ordre - b.data.ordre
@@ -11,7 +12,7 @@ const photos = (await getCollection('gallery')).sort(
 <section id="galerie" class="py-24 sm:py-32 bg-navy-950">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="reveal text-center mb-16">
-      <p class="text-gold-500 text-sm tracking-[0.2em] uppercase mb-3">L'ambiance</p>
+      <Eyebrow color="gold-500">L'ambiance</Eyebrow>
       <h2 class="font-serif text-4xl sm:text-5xl text-cream-50">En images</h2>
       <Squiggle />
     </div>

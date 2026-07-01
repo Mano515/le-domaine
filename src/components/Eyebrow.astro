@@ -1,0 +1,14 @@
+---
+// Small gold label shown above a section title (e.g. "Notre carte", "L'ambiance")
+interface Props {
+  color?: 'gold-500' | 'gold-600';
+}
+const { color = 'gold-600' } = Astro.props;
+// Tailwind needs full class names present in source to generate them,
+// so the color can't be interpolated into the class string directly.
+const textColor = color === 'gold-500' ? 'text-gold-500' : 'text-gold-600';
+---
+
+<p class={`${textColor} text-sm tracking-[0.2em] uppercase mb-3 mt-0.5`}>
+  <slot />
+</p>

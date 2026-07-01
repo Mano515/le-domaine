@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Squiggle from './Squiggle.astro';
+import Eyebrow from './Eyebrow.astro';
 
 const categories = (await getCollection('menu')).sort(
   (a, b) => a.data.ordre - b.data.ordre
@@ -10,7 +11,7 @@ const categories = (await getCollection('menu')).sort(
 <section id="carte" class="py-24 sm:py-32 bg-navy-950 relative">
   <div class="mx-auto max-w-5xl px-5 sm:px-8">
     <div class="reveal text-center mb-16">
-      <p class="text-gold-500 text-sm tracking-[0.2em] uppercase mb-3">Notre carte</p>
+      <Eyebrow color="gold-500">Notre carte</Eyebrow>
       <h2 class="font-serif text-4xl sm:text-5xl text-cream-50">Ce qui se déguste ici</h2>
       <Squiggle />
     </div>
