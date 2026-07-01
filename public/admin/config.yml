@@ -1,0 +1,101 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: simple
+media_folder: "public/images"
+public_folder: "/images"
+
+locale: "fr"
+
+collections:
+  - name: "site"
+    label: "Informations générales"
+    files:
+      - name: "settings"
+        label: "Paramètres du site"
+        file: "src/data/site.json"
+        fields:
+          - { label: "Nom du bar", name: "nom", widget: "string" }
+          - { label: "Accroche", name: "accroche", widget: "string" }
+          - { label: "Adresse", name: "adresse", widget: "string" }
+          - { label: "Téléphone", name: "telephone", widget: "string", required: false }
+          - { label: "Lien Instagram", name: "instagram", widget: "string" }
+          - { label: "Lien Facebook", name: "facebook", widget: "string" }
+          - { label: "Carte Google Maps (lien embed)", name: "googleMapsEmbed", widget: "string" }
+          - label: "Horaires"
+            name: "horaires"
+            widget: "object"
+            fields:
+              - { label: "Restauration", name: "restauration", widget: "string" }
+              - { label: "Bar (lundi-mercredi)", name: "bar_lun_mer", widget: "string" }
+              - { label: "Bar (jeudi-samedi)", name: "bar_jeu_sam", widget: "string" }
+          - label: "Widget Instagram (optionnel, lien embed SnapWidget/Elfsight)"
+            name: "instagramWidgetUrl"
+            widget: "string"
+            required: false
+          - label: "Lien vers tous les avis Google"
+            name: "googleReviewsUrl"
+            widget: "string"
+          - label: "Widget avis Google (optionnel, lien embed Elfsight/EmbedSocial — affiche les avis automatiquement)"
+            name: "googleReviewsWidgetUrl"
+            widget: "string"
+            required: false
+
+  - name: "menu"
+    label: "La carte"
+    folder: "src/content/menu"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "categorie"
+    fields:
+      - { label: "Nom de la catégorie", name: "categorie", widget: "string" }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", default: 0 }
+      - label: "Plats"
+        name: "plats"
+        widget: "list"
+        fields:
+          - { label: "Nom du plat", name: "nom", widget: "string" }
+          - { label: "Description", name: "description", widget: "string", required: false }
+          - { label: "Prix", name: "prix", widget: "string" }
+
+  - name: "events"
+    label: "Soirées & événements"
+    folder: "src/content/events"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    identifier_field: "titre"
+    fields:
+      - { label: "Titre", name: "titre", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Heure", name: "heure", widget: "string", required: false }
+      - { label: "Photo", name: "image", widget: "image", required: false }
+      - { label: "Résumé (affiché sur la carte)", name: "resume", widget: "string", required: false }
+      - { label: "Description complète", name: "body", widget: "markdown", required: false }
+
+  - name: "gallery"
+    label: "Galerie photo"
+    folder: "src/content/gallery"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "alt"
+    fields:
+      - { label: "Photo", name: "image", widget: "image" }
+      - { label: "Description (texte alternatif)", name: "alt", widget: "string" }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", default: 0 }
+
+  - name: "reviews"
+    label: "Avis Google"
+    folder: "src/content/reviews"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "auteur"
+    fields:
+      - { label: "Auteur", name: "auteur", widget: "string" }
+      - { label: "Note (1 à 5)", name: "note", widget: "number", min: 1, max: 5, default: 5 }
+      - { label: "Texte de l'avis", name: "texte", widget: "text" }
+      - { label: "Date de l'avis", name: "date", widget: "date" }

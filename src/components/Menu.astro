@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Squiggle from './Squiggle.astro';
+
+const categories = (await getCollection('menu')).sort(
+  (a, b) => a.data.ordre - b.data.ordre
+);
+---
+
+<section id="carte" class="py-24 sm:py-32 bg-navy-950 relative">
+  <div class="mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal text-center mb-16">
+      <p class="text-gold-500 text-sm tracking-[0.2em] uppercase mb-3">Notre carte</p>
+      <h2 class="font-serif text-4xl sm:text-5xl text-cream-50">Ce qui se déguste ici</h2>
+      <Squiggle />
+    </div>
+
+    <div class="reveal-stagger grid sm:grid-cols-2 gap-x-12 gap-y-14">
+      {categories.map((cat, i) => (
+        <div class={`ornament p-6 transition-all duration-300 hover:bg-white/[0.03] rounded-sm ${i % 2 === 0 ? 'tilt-a' : 'tilt-b'}`}>
+          <div class="flex items-center justify-center gap-3 mb-5">
+            <span class="seal">{i + 1}</span>
+            <h3 class="font-serif text-2xl text-gold-400 text-center">
+              {cat.data.categorie}
+            </h3>
+          </div>
+          <ul class="space-y-3.5">
+            {cat.data.plats.map((plat) => (
+              <li class="flex items-baseline gap-3">
+                <span class="text-cream-100">{plat.nom}</span>
+                <span class="flex-1 border-b border-dotted border-cream-100/25 translate-y-[-3px]"></span>
+                <span class="text-gold-400 text-sm shrink-0">{plat.prix}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-cream-100/50 text-sm mt-16">
+      Carte sujette à modifications selon les arrivages.
+    </p>
+  </div>
+</section>

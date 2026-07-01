@@ -1,0 +1,84 @@
+---
+import site from '../data/site.json';
+
+const links = [
+  { href: '#carte', label: 'La carte' },
+  { href: '#soirees', label: 'Soirées' },
+  { href: '#galerie', label: 'Galerie' },
+  { href: '#avis', label: 'Avis' },
+  { href: '#infos', label: 'Infos & accès' },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 bg-navy-950/80 backdrop-blur-sm border-b border-gold-500/20 transition-shadow duration-300"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 flex items-center justify-between h-16">
+    <a href="#top" class="flex items-center gap-2.5">
+      <img src="/images/logo-white.png" alt={site.nom} class="h-9 w-auto" />
+      <span class="font-serif text-cream-100 text-lg tracking-wide">{site.nom}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="relative text-cream-100/90 text-sm tracking-wide transition-colors hover:text-gold-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-gold-400 after:transition-[width] after:duration-300 hover:after:w-full"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden text-cream-100 p-2 btn-press"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" class="hidden md:hidden flex-col bg-navy-950 border-t border-gold-500/20">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class="block px-6 py-3.5 text-cream-100 text-sm tracking-wide border-b border-gold-500/10 last:border-0 transition-colors hover:text-gold-400 hover:bg-white/5"
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('site-header');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('flex');
+    menu?.classList.toggle('hidden', isOpen);
+    menu?.classList.toggle('flex', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      toggle?.setAttribute('aria-expanded', 'false');
+    })
+  );
+
+  const onScroll = () => {
+    header?.classList.toggle('shadow-lg', window.scrollY > 12);
+    header?.classList.toggle('shadow-navy-950/30', window.scrollY > 12);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

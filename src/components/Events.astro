@@ -1,0 +1,181 @@
+---
+import { getCollection, render } from 'astro:content';
+import Squiggle from './Squiggle.astro';
+
+const now = new Date(new Date().toDateString());
+const allEvents = await getCollection('events');
+
+const RECENT_PAST_DAYS = 45;
+const recentPastCutoff = new Date(now.getTime() - RECENT_PAST_DAYS * 24 * 60 * 60 * 1000);
+
+const upcoming = allEvents
+  .filter((e) => e.data.date >= now)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const recentPast = allEvents
+  .filter((e) => e.data.date < now && e.data.date >= recentPastCutoff)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const events = upcoming.length > 0
+  ? upcoming.slice(0, 6)
+  : recentPast.slice(0, 3);
+
+const isUpcoming = upcoming.length > 0;
+
+const rendered = await Promise.all(events.map((event) => render(event)));
+
+const formatter = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<section id="soirees" class="py-24 sm:py-32 bg-cream-50">
+  <div class="mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal text-center mb-16">
+      <p class="text-gold-600 text-sm tracking-[0.2em] uppercase mb-3">{isUpcoming ? 'À venir' : 'Ça s\'est passé ici'}</p>
+      <h2 class="font-serif text-4xl sm:text-5xl text-navy-900">Nos soirées</h2>
+      <Squiggle color="#ad8548" />
+    </div>
+
+    {events.length === 0 ? (
+      <p class="reveal text-center text-navy-900/60">
+        Aucune soirée programmée pour le moment — suivez-nous sur Instagram pour ne rien manquer dès que ça bouge.
+      </p>
+    ) : (
+      <div class="reveal-stagger grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {events.map((event) => (
+          <button
+            type="button"
+            data-event-trigger={event.id}
+            class="hover-lift btn-press bg-navy-900 rounded-md overflow-hidden group text-left w-full cursor-pointer"
+          >
+            {event.data.image && (
+              <div class="aspect-[4/3] overflow-hidden">
+                <img
+                  src={event.data.image}
+                  alt={event.data.titre}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            )}
+            <div class="p-6">
+              <p class="text-gold-400 text-xs tracking-widest uppercase mb-2">
+                {formatter.format(event.data.date)}
+                {event.data.heure && ` · ${event.data.heure}`}
+              </p>
+              <h3 class="font-serif text-xl text-cream-50 mb-2">{event.data.titre}</h3>
+              {event.data.resume && (
+                <p class="text-cream-100/70 text-sm">{event.data.resume}</p>
+              )}
+              <span class="inline-block mt-3 text-gold-500 text-xs tracking-wide underline underline-offset-4">
+                Voir le détail
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+    )}
+  </div>
+
+  {events.map((event, i) => {
+    const { Content } = rendered[i];
+    return (
+      <dialog data-event-modal={event.id} class="event-modal">
+        <div class="event-modal-inner">
+          <button type="button" data-event-close aria-label="Fermer" class="event-modal-close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M18 6 6 18M6 6l12 12" stroke-linecap="round" />
+            </svg>
+          </button>
+          {event.data.image && (
+            <div class="aspect-[16/9] overflow-hidden">
+              <img src={event.data.image} alt={event.data.titre} class="w-full h-full object-cover" />
+            </div>
+          )}
+          <div class="p-6 sm:p-8">
+            <p class="text-gold-400 text-xs tracking-widest uppercase mb-2">
+              {formatter.format(event.data.date)}
+              {event.data.heure && ` · ${event.data.heure}`}
+            </p>
+            <h3 class="font-serif text-2xl sm:text-3xl text-cream-50 mb-4">{event.data.titre}</h3>
+            <div class="event-modal-body text-cream-100/85 text-sm sm:text-base">
+              <Content />
+            </div>
+          </div>
+        </div>
+      </dialog>
+    );
+  })}
+</section>
+
+<script>
+  document.querySelectorAll('[data-event-trigger]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const id = trigger.getAttribute('data-event-trigger');
+      const modal = document.querySelector(`[data-event-modal="${CSS.escape(id ?? '')}"]`);
+      if (modal instanceof HTMLDialogElement) modal.showModal();
+    });
+  });
+
+  document.querySelectorAll('[data-event-close]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const dialog = btn.closest('dialog');
+      if (dialog instanceof HTMLDialogElement) dialog.close();
+    });
+  });
+
+  document.querySelectorAll('dialog.event-modal').forEach((dialog) => {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) (dialog as HTMLDialogElement).close();
+    });
+  });
+</script>
+
+<style>
+  .event-modal {
+    max-width: 42rem;
+    width: calc(100% - 2rem);
+    padding: 0;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--color-navy-900);
+    overflow: hidden;
+  }
+
+  .event-modal::backdrop {
+    background: rgba(11, 21, 38, 0.7);
+    backdrop-filter: blur(2px);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .event-modal[open] {
+      animation: fade-in-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  }
+
+  .event-modal-inner {
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .event-modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+    color: var(--color-cream-100);
+    background: rgba(11, 21, 38, 0.6);
+    border-radius: 9999px;
+    padding: 0.4rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .event-modal-close:hover {
+    background: rgba(11, 21, 38, 0.9);
+  }
+
+  .event-modal-body :global(p) {
+    margin-bottom: 0.75rem;
+    white-space: pre-line;
+  }
+</style>

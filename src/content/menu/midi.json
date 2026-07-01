@@ -1,0 +1,11 @@
+{
+  "categorie": "Le midi",
+  "ordre": 0,
+  "plats": [
+    { "nom": "Vol-au-vent au bœuf sauce tartare", "prix": "15,90 €" },
+    { "nom": "Poulet karaage", "prix": "18,90 €" },
+    { "nom": "Griset sauce crevette", "prix": "18,90 €" },
+    { "nom": "Salade parisienne", "prix": "15,90 €" },
+    { "nom": "Aubergines chèvre pignons", "prix": "13,90 €" }
+  ]
+}

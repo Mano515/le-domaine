@@ -1,0 +1,84 @@
+---
+import site from '../data/site.json';
+import Squiggle from './Squiggle.astro';
+---
+
+<section id="infos" class="py-24 sm:py-32 bg-cream-50">
+  <div class="mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal text-center mb-16">
+      <p class="text-gold-600 text-sm tracking-[0.2em] uppercase mb-3">Infos pratiques</p>
+      <h2 class="font-serif text-4xl sm:text-5xl text-navy-900">Nous trouver</h2>
+      <Squiggle color="#ad8548" />
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div class="reveal space-y-8">
+        <div>
+          <h3 class="font-serif text-xl text-navy-900 mb-2">Adresse</h3>
+          <p class="text-navy-900/80">{site.adresse}</p>
+        </div>
+
+        {site.telephone && (
+          <div>
+            <h3 class="font-serif text-xl text-navy-900 mb-2">Téléphone</h3>
+            <a href={`tel:${site.telephone.replace(/\s+/g, '')}`} class="text-navy-900/80 hover:text-gold-600 transition-colors">
+              {site.telephone}
+            </a>
+          </div>
+        )}
+
+        <div>
+          <h3 class="font-serif text-xl text-navy-900 mb-3">Horaires</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <span class="text-xl leading-none mt-0.5">🍽</span>
+              <div>
+                <p class="text-navy-900 font-medium text-sm">Restaurant — le midi</p>
+                <p class="text-navy-900/70 text-sm">{site.horaires.restauration}</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-xl leading-none mt-0.5">🍷</span>
+              <div>
+                <p class="text-navy-900 font-medium text-sm">Bar — le soir</p>
+                <p class="text-navy-900/70 text-sm">Lundi à mercredi : {site.horaires.bar_lun_mer}</p>
+                <p class="text-navy-900/70 text-sm">Jeudi à samedi : {site.horaires.bar_jeu_sam}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-4 pt-2">
+          <a
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-press px-5 py-2.5 bg-navy-900 text-cream-100 rounded-sm text-sm tracking-wide hover:bg-navy-800"
+          >
+            Instagram
+          </a>
+          <a
+            href={site.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-press px-5 py-2.5 border border-navy-900 text-navy-900 rounded-sm text-sm tracking-wide hover:bg-navy-900 hover:text-cream-100"
+          >
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal aspect-[4/3] w-full rounded-sm overflow-hidden border border-navy-900/10 shadow-sm">
+        <iframe
+          src={site.googleMapsEmbed}
+          width="100%"
+          height="100%"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localisation du Domaine"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>

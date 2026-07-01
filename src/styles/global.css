@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-navy-950: #0b1526;
+  --color-navy-900: #101f38;
+  --color-navy-800: #16294a;
+  --color-navy-700: #1f3660;
+  --color-cream-50: #fdfbf5;
+  --color-cream-100: #f6efe1;
+  --color-cream-200: #ece0c8;
+  --color-gold-400: #d4b06a;
+  --color-gold-500: #c9a35e;
+  --color-gold-600: #ad8548;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream-50);
+  color: var(--color-navy-900);
+  font-family: var(--font-sans);
+}
+
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-stagger.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+  .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+  .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+  .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+  .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+  .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+  .reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 480ms; }
+}
+
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px -16px rgba(11, 21, 38, 0.35);
+}
+
+.btn-press {
+  transition: transform 0.2s ease, background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-press:hover {
+  transform: translateY(-2px);
+}
+
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-in {
+    opacity: 0;
+    animation: fade-in-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slow-zoom {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .hero-bg {
+    animation: slow-zoom 12s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.ornament {
+  position: relative;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-gold-500);
+  opacity: 0.6;
+}
+
+.ornament::before {
+  top: -8px;
+  left: -8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.ornament::after {
+  bottom: -8px;
+  right: -8px;
+  border-left: none;
+  border-top: none;
+}
+
+/* --- Personality layer --- */
+
+.accent-word {
+  font-style: italic;
+  color: var(--color-gold-400);
+}
+
+/* subtle paper-grain texture, tileable, very low opacity */
+.grain {
+  position: relative;
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* hand-drawn squiggle under section headings */
+.squiggle {
+  display: block;
+  width: 92px;
+  height: 12px;
+  margin: 14px auto 0;
+}
+
+.squiggle-left {
+  margin: 10px 0 0;
+}
+
+/* marquee ticker */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 26s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* alternating tilt for menu / card grids -> playful, not perfectly boxed */
+.tilt-a { transform: rotate(-0.6deg); }
+.tilt-b { transform: rotate(0.6deg); }
+
+.tilt-a:hover, .tilt-b:hover {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+/* wax-seal style number badge */
+.seal {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-gold-500);
+  color: var(--color-navy-950);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px -2px rgba(11, 21, 38, 0.4);
+  flex-shrink: 0;
+}

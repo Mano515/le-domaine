@@ -1,0 +1,17 @@
+{
+  "nom": "Le Domaine",
+  "accroche": "Resto le midi, bar le soir — au cœur de Grenoble",
+  "adresse": "2 Rue Lakanal, Grenoble",
+  "telephone": "",
+  "instagram": "https://www.instagram.com/ledomaine_gre/",
+  "facebook": "https://www.facebook.com/profile.php?id=61569793207675",
+  "googleMapsEmbed": "https://www.google.com/maps?q=2+Rue+Lakanal,+Grenoble&output=embed",
+  "horaires": {
+    "restauration": "11h–15h (sauf lundi)",
+    "bar_lun_mer": "18h – 00h",
+    "bar_jeu_sam": "18h – 1h"
+  },
+  "instagramWidgetUrl": "",
+  "googleReviewsUrl": "https://www.google.com/search?q=Le+Domaine+2+Rue+Lakanal+Grenoble#lrd=reviews",
+  "googleReviewsWidgetUrl": ""
+}

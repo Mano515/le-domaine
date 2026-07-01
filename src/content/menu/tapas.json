@@ -1,0 +1,14 @@
+{
+  "categorie": "Tapas du mois",
+  "ordre": 1,
+  "plats": [
+    { "nom": "Tartinade de surimi", "prix": "6,90 €" },
+    { "nom": "Waffles", "prix": "6,90 €" },
+    { "nom": "Pilons de poulet", "prix": "9,90 €" },
+    { "nom": "Balle tomato mozza", "prix": "9,90 €" },
+    { "nom": "Tartare de saucisse sèche", "prix": "9,90 €" },
+    { "nom": "Club sando", "prix": "12,90 €" },
+    { "nom": "Pépites d'encornets", "prix": "12,90 €" },
+    { "nom": "Boulettes de bœuf", "prix": "12,90 €" }
+  ]
+}

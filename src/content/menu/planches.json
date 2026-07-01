@@ -1,0 +1,9 @@
+{
+  "categorie": "Planches",
+  "ordre": 2,
+  "plats": [
+    { "nom": "Fromage", "prix": "9,90 €" },
+    { "nom": "Charcuterie", "prix": "9,90 €" },
+    { "nom": "Mixte", "prix": "17,90 €" }
+  ]
+}

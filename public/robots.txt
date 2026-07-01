@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://ledomaine-grenoble.netlify.app/sitemap-index.xml
