@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import site from '../data/site.json';
+import SmoothScroll from '../components/SmoothScroll.tsx';
 
 interface Props {
   title?: string;
@@ -51,6 +52,7 @@ const ogImageURL = new URL(image, Astro.site);
     />
   </head>
   <body class="grain bg-cream-50 text-navy-900 antialiased">
+    <SmoothScroll client:load />
     <slot />
 
     <script>

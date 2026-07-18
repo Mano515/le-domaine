@@ -18,12 +18,21 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+/* .lenis is present the whole time Lenis is active (unlike .lenis-smooth,
+   only added during an active scroll) — disable native smooth scroll here
+   so it doesn't fight Lenis's own easing every frame. */
+html.lenis {
+  scroll-behavior: auto;
 }
 
 body {
   background-color: var(--color-cream-50);
   color: var(--color-navy-900);
   font-family: var(--font-sans);
+  overflow-x: clip;
 }
 
 section[id] {
