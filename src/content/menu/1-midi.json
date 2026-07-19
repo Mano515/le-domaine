@@ -3,10 +3,12 @@
   "ordre": 0,
   "moment": "midi",
   "plats": [
-    { "nom": "Vol-au-vent au bœuf sauce tartare", "prix": "15,90 €" },
-    { "nom": "Poulet karaage", "prix": "18,90 €" },
-    { "nom": "Griset sauce crevette", "prix": "18,90 €" },
-    { "nom": "Salade parisienne", "prix": "15,90 €" },
-    { "nom": "Aubergines chèvre pignons", "prix": "13,90 €" }
+    { "nom": "Plat du jour", "prix": "12,90 €" },
+    { "nom": "Plat du jour + Dessert", "prix": "18,90 €" },
+    { "nom": "Filet de canette aux groseilles", "prix": "19,90 €" },
+    { "nom": "Bifteck boston grillé au thym", "prix": "18,90 €" },
+    { "nom": "Brochettes de gambas", "prix": "18,90 €" },
+    { "nom": "Salade Grenobloise", "prix": "15,90 €" },
+    { "nom": "Gyozas aux légumes", "prix": "13,90 €" }
   ]
 }

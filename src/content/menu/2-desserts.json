@@ -3,8 +3,8 @@
   "ordre": 1,
   "moment": "midi",
   "plats": [
-    { "nom": "Soufflet cookie", "prix": "6,90 €" },
-    { "nom": "Sunday framboise caramel", "prix": "6,90 €" },
+    { "nom": "Tiramisu du domaine", "prix": "6,90 €" },
+    { "nom": "Coupe tropicale glacée", "prix": "6,90 €" },
     { "nom": "Café gourmand", "prix": "6,90 €" }
   ]
 }
